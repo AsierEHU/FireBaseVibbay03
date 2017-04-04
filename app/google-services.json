@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "997586447722",
+    "firebase_url": "https://vibbay03-4f198.firebaseio.com",
+    "project_id": "vibbay03-4f198",
+    "storage_bucket": "vibbay03-4f198.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997586447722:android:d95ef9977728956f",
+        "android_client_info": {
+          "package_name": "com.example.asier.vibbay03"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997586447722-ofuno79nput3m77u875bdu72cstnjhn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfYTRFQST5hl2eJ7St44Eyt8yDQRB1ZKg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

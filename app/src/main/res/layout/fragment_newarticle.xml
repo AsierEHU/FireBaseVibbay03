@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        tools:text="Título:" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ArticleName" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        tools:text="Precio:" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ArticlePrice" />
+
+    <ImageView
+        android:id="@+id/imageTaken"
+        android:src="@drawable/ic_menu_camera"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300px"
+        android:layout_height="300px" />
+
+    <Button
+        android:text="Agregar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Add"
+        />
+
+</LinearLayout>
