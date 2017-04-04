@@ -26,6 +26,8 @@ import com.example.asier.vibbay03.Fragments.NewArticleFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         //Llamar a AllArticlesFragment
@@ -143,6 +145,14 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = true;
                 break;
             case R.id.nav_main:
+                fragment = new AllArticlesFragment();
+                fragmentTransaction = true;
+                break;
+            case R.id.nav_logout:
+                navigationView.getMenu().findItem(R.id.nav_login).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_logout).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_myArticles).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_newArticle).setVisible(false);
                 fragment = new AllArticlesFragment();
                 fragmentTransaction = true;
                 break;

@@ -79,6 +79,7 @@ public class LoginFragment extends Fragment {
                     allArticles = new AllArticlesFragment();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     navigation.getMenu().findItem(R.id.nav_login).setVisible(false);
+                    navigation.getMenu().findItem(R.id.nav_logout).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_myArticles).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_newArticle).setVisible(true);
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
