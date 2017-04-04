@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.asier.vibbay03.Beans.Articulo;
@@ -41,9 +42,9 @@ public class SearchedArticlesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        fl = (GridLayout) inflater.inflate(R.layout.fragment_allarticles, container, false);
-        return fl;
-
+        ScrollView sv = (ScrollView) inflater.inflate(R.layout.fragment_allarticles, container, false);
+        fl =(GridLayout) sv.findViewById(R.id.lay_allArticles);
+        return sv;
     }
 
     @Override
