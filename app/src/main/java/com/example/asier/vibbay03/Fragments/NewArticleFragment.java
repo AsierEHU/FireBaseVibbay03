@@ -32,6 +32,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -96,7 +97,6 @@ public class NewArticleFragment extends Fragment {
     private void addArticle(){
         nombre = (EditText) ll.findViewById(R.id.ArticleName);
         precio = (EditText) ll.findViewById(R.id.ArticlePrice);
-        String foto64 = ImageTools.encodeToBase64(bm,Bitmap.CompressFormat.JPEG,20);
 
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -124,7 +124,10 @@ public class NewArticleFragment extends Fragment {
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
                 Log.i("Link", downloadUrl.toString());
 
-                Articulo a = new Articulo(nombre.getText().toString(),1,downloadUrl.toString(),Double.parseDouble(precio.getText().toString()));
+                DecimalFormat df = new DecimalFormat("#.00");
+                String pri = df.format(Double.parseDouble(precio.getText().toString()));
+
+                Articulo a = new Articulo(nombre.getText().toString(),1,downloadUrl.toString(),Double.parseDouble(pri));
                 Map<String, Object> articuloValues = a.toMap();
 
                 Map<String, Object> childUpdates = new HashMap<>();
