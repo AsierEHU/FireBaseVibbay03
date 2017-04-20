@@ -1,7 +1,11 @@
 package com.example.asier.vibbay03.Fragments;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +33,7 @@ import java.util.Iterator;
 public class AllArticlesFragment extends Fragment {
 
     GridView fl;
-
+    int MY_PERMISSIONS_REQUEST;
 
     public AllArticlesFragment() {
         // Required empty public constructor
@@ -46,6 +50,17 @@ public class AllArticlesFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle state){
         super.onActivityCreated(state);
+
+
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.CAMERA},
+                        MY_PERMISSIONS_REQUEST);
+            }
+
 
         final ArrayList<ArticleViews> articles = new ArrayList<>();
 
@@ -75,6 +90,4 @@ public class AllArticlesFragment extends Fragment {
             }
         });
     }
-
-
 }
