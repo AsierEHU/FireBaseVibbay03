@@ -2,409 +2,283 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.6.1\jars\classes.jar"
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\9.6.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-9.6.1_3b32db26a7b2015b264d520ced3eef7abd6d4387.jar" />
+        sha1="8c6ef5bd4072f8cda2b89d8356ea7d8acd0683aa">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-9.6.1_de41083750b108493f70c70862c8201f5a822eaa\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\Users\asier\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.0.1\2780d858273ce1bb90f6b12e1ef0d40f7741fca\converter-gson-2.0.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="02780d858273ce1bb90f6b12e1ef0d40f7741fca">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.1_8cff7a75aa84f70e42a1f937fe5f8810c104dd82.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\converter-gson-2.0.1_8cff7a75aa84f70e42a1f937fe5f8810c104dd82\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.1_49ec11c2e72f1e4115b930d009707aa8cd41812d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.1_f984ec9a1b03b4a24d850af2288183943375754f.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.1_51ad420b2a1672a85fa7aa27f619bac99cd528b2\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.1_27286e8c09d7f9ca8bb3c923797406a096b5df62.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.1_0f68a6e3ba4faadf512b1085b0cae13635f9ee11\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.1_79f817a8fe893b21ecd0f2f265069eaf05bec6ff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.1.1_1e7bde21534dde2109e4f50123131a7588eb8922.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="db2d1dae451cc4938d84dd785f5964faf93fa783">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\instant-run_0e09fc74bd4b6025b882a27907ee2782de25db25.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\Users\asier\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.0.1\27293c440d2085cde1d859528aff6e7d3b6ae40\retrofit-2.0.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="027293c440d2085cde1d859528aff6e7d3b6ae40">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\retrofit-2.0.1_bc041eaccc32524e283f8ecf2a4b6d526e7b3358.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\retrofit-2.0.1_bc041eaccc32524e283f8ecf2a4b6d526e7b3358\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="159494eb362396d073d8c922b77e40c0da5fc5bc">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-storage-common-9.6.1_01315c6c5290ad628592515ee3928b56c15bf038.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.1\b9d63507329a7178e026fc334f87587ee5070ac5\gson-2.6.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\gson-2.6.1_23a4c1ce256bf5c634a7998e2134b49c860330b3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.1_1ff06e19257004b9ae148cbb11e662d50069fd61.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.1.1_eab291ac6208974c25a331f732bf354f1c8dbbb3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4a36600281a648769411ef642c331851732bf29e">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-9.6.1_459414830182f122f8c62754ab51f5cc6df3cd50.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8c6ef5bd4072f8cda2b89d8356ea7d8acd0683aa">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-storage-9.6.1_2816edc832de86db7668595bac1473abddf036c1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="80dd8bea08bc5fe10b10a3243b8279c856ccc690">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-messaging-9.6.1_a19fadb60b6ceea1832a1340b2987fda52d803d4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.1_e7924a8db7520c7f4dff7cfd825f6963b964c57c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.1_dbc8e795b5da2ff26f56b50e93058b1f56159eff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.2.0\f7873a2ebde246a45c2a8d6f3247108b4c88a879\okhttp-3.2.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\okhttp-3.2.0_ad1ec6f6d462f28ca4f35d1c6ebbb983d5c73281.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.1.1_4e389c4312ac4595279df1b0d6b8acbb446617f3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.1.1_b686e6575c155a53e4e132b0a62dad7bbacffd4b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.1_c9881941ce8de4eec4216cb490db917e24851783.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.1_61edf22c48505b1e28a2e926717cfbd6f69090f7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a384489e609258f75d8679f7077f9a642bcebefd">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\instant-run_07b31cec327e80d429c8e8211636b9cbc33ddeb0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.1_642e76ca6b1d4acdbb4136a6ca0100ec8cb19e94.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.1_28b398d8e0e440ccb3eabef24562993e61d097fc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1ef72e72bc0d05602c366582afa9439f58bb31d6">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-9.6.1_77869b727ab557757cbc3e2bbe929f1ae821ba83.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.1_432152d6c764f427fc45ec06f5411bcfa647b32f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.1_6f0d834b6e527c26f591ca345629e72ce4baf557.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.1_49b3b87b03cb56fea5ec7aa182c4626cd95a1411.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.1.1_a75dce10eb6c814e5b3afb7574468d6b8c3d6855.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.1.1_7f8ed371931622c5a1684fc1c1d4404c2f7d0fe0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.1_7daebc00e7c7d19ebd8d85d9586070304a89c215.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\Users\asier\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.1_e371b59b905cc267f1822aa0b62452b9b83d0be0.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.1_e371b59b905cc267f1822aa0b62452b9b83d0be0\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.6.1\jars\classes.jar"
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a1c351dc10b92d638da57f3a6513f87cfbdc9f83">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-9.6.1_00ffd3387e6674a8c9ebb2f19e13c7df5ad82ab2.jar" />
+        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.1.1_586c3ea83665790ba7cbdcb8b15261ba31109ab3\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.1_e64f01a2317d2de7c91e6afea4b5810238e6ed4a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ac8365c87591065db07f7bac8551504504832cd4">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-9.6.1_9437d3bafc3cbacc8a8239ee6f0cbbdac1225587\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.6.1_8ccb8b6ba10f1a51c76b9d178ad441306b16549b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8b1eb8cd8c3c61da2a0c4f0e5ffc1fa40d79d0ee">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_d2ce2ec2748a555e52049f3baecbb82725502fc3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\asier\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.2.0\f7873a2ebde246a45c2a8d6f3247108b4c88a879\okhttp-3.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.2.0_ad1ec6f6d462f28ca4f35d1c6ebbb983d5c73281\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\asier\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.1\b9d63507329a7178e026fc334f87587ee5070ac5\gson-2.6.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.6.1_23a4c1ce256bf5c634a7998e2134b49c860330b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.1_832aecf94144343f126d5487b5e70086b930938a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b75ecdd04a37d31b4a0da2729fc5c558962a529b">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-9.6.1_2a6f74a95175993c3d5b7d01d249f665ae6cb485\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.1_c65957408f4f474457d9be83ba3d98220d81f554\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.1_354b2472cd898c58e6f8c6cccb0caebd15edab2e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.1.1_44b96b12a0c1ff5e4052c30f09efe7c3b88b3818\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.1_0da28de083caeb17ee8d10a64a77735ae842eace.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.1_771db3906555d947c08c443992d3722565406014\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="62e4680375be317e8677dbaa5a06cc0019e83213">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_509fdf2c7d85dbfaa4556f44d5045e4ffad31d5e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0efd1b44f47c134fb245914a1d54a55adbfc2f8d">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-9.6.1_26be33a7849b4fcbc2b26f1745923a66ab019636\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a1c351dc10b92d638da57f3a6513f87cfbdc9f83">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-9.6.1_0b293ef89bddb7b9118b776eb5df8627b7db8a22\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1ef72e72bc0d05602c366582afa9439f58bb31d6">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-9.6.1_f3920be6b4348c77fd56b7c37dae19d017d6aa81\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\asier\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\okio-1.6.0_e423abed1a0df196d59bb22f08cc14c357cf7380.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.6.0_e423abed1a0df196d59bb22f08cc14c357cf7380\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0efd1b44f47c134fb245914a1d54a55adbfc2f8d">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-9.6.1_ab12e9b79838bec43615fa42332a13179e4b0b0e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b276b7e41cbfc97086afb80e9e83ec3921bebb08">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_6e783606bb6f00725961fbdd5b4891ffff8cd3b6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="15debecc87e0dd292d19333ee620fcc05d0b7050">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_882a42b0a94cd22c59c78b6b469db3be11af75a2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1e14ebe1cda8491f152083e752ca5bf73cd37bff">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-9.6.1_c7bf669af0760769d04db0254dde673b8fd555c0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b75ecdd04a37d31b4a0da2729fc5c558962a529b">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-database-9.6.1_fffce196e76e8cfa4cfe63f4144fff5e6089aa3a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\VibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.1_cba0d26a9cf24996797dd8e7121a6c6548b6469a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.1_65189967960247a3db771570e837ff6645194860.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ac8365c87591065db07f7bac8551504504832cd4">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-database-connection-9.6.1_ae318b78b17443d6306eb9f5f9536bf417c75a5f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="C:\Users\asier\AndroidStudioProjects\FireBaseVibBay03\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.1_a58d7641c56684b4447cebf4f63554d8909b1eac.jar" />
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.1_e7c5fcfe2c037c373f85c61ac103c340d8b430ff\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a36600281a648769411ef642c331851732bf29e">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.6.1_3ad7224b2555fbd5a562a195f5e28e28e237be51\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="159494eb362396d073d8c922b77e40c0da5fc5bc">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-9.6.1_867500e9187dc2903ca5d5fd97458e58f3a13d52\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1e14ebe1cda8491f152083e752ca5bf73cd37bff">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-9.6.1_7a80f5fb85592a740e1d269ed6ea5d297d489671\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.1.1_9c735eea21f833d3ed14b99a2cb8142bf57ff293\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="80dd8bea08bc5fe10b10a3243b8279c856ccc690">
+        <dex dex="D:\AndroidStudioProjects\FireBaseVibbay03\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-9.6.1_7a1e645f1dd087d208a86ee1b65a0b757c61b0d5\classes.dex" />
     </item>
 
 </items>

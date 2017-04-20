@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.asier.vibbay03.Beans.Usuario;
@@ -29,7 +30,7 @@ public class LoginFragment extends Fragment {
     EditText username;
     EditText password;
     Button buttonClick;
-    GridLayout fL;
+    LinearLayout fL;
     NavigationView navigation;
     Fragment allArticles;
 
@@ -47,7 +48,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                     testLogin();}
         };
-        fL = (GridLayout) inflater.inflate(R.layout.fragment_login, container, false);
+        fL = (LinearLayout) inflater.inflate(R.layout.fragment_login, container, false);
         navigation = (NavigationView)container.getRootView().findViewById(R.id.nav_view);
         buttonClick = (Button)fL.findViewById(R.id.buttonAccept);
         buttonClick.setOnClickListener(mClickListener);

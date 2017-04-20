@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:weightSum="1">
 
     <TextView
-        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
-        tools:text="Título:" />
+        android:text="Titulo:" />
 
     <EditText
         android:layout_width="match_parent"
@@ -20,11 +19,10 @@
         android:id="@+id/ArticleName" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView3"
-        tools:text="Precio:" />
+        android:text="Precio:" />
 
     <EditText
         android:layout_width="match_parent"
@@ -33,14 +31,42 @@
         android:ems="10"
         android:id="@+id/ArticlePrice" />
 
+    <LinearLayout
+        android:orientation="horizontal" android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageTaken"
+            android:src="@drawable/ic_menu_camera"
+            android:adjustViewBounds="false"
+            android:cropToPadding="true"
+            android:layout_gravity="fill_vertical"
+            android:layout_width="133dp"
+            android:layout_height="100px"
+            />
+
+        <ImageView
+            android:id="@+id/galleryTaken"
+            android:src="@drawable/ic_menu_gallery"
+            android:adjustViewBounds="false"
+            android:cropToPadding="true"
+            android:layout_gravity="fill_horizontal"
+            android:layout_width="124dp"
+            android:layout_height="100px"
+            android:scaleType="fitEnd" />
+    </LinearLayout>
+
+
     <ImageView
-        android:id="@+id/imageTaken"
-        android:src="@drawable/ic_menu_camera"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="300px"
-        android:layout_height="300px" />
+        android:id="@+id/resultImage"
+        android:src="@drawable/ic_imagebox"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_gravity="fill_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="300px"
+        android:scaleType="fitCenter"
+        android:layout_weight="0.45" />
 
     <Button
         android:text="Agregar"

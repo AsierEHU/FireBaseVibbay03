@@ -4,13 +4,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_main"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_action_name"
             android:title="Inicio"
             android:visible="true"
             />
         <item
             android:id="@+id/nav_login"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_login"
             android:title="Login"
             android:visible="true"
             />
@@ -22,13 +22,13 @@
             />
         <item
             android:id="@+id/nav_newArticle"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_new_article"
             android:title="Nuevo Artículo"
             android:visible="false"
             />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_logout"
             android:title="Log out"
             android:visible="false"
             />

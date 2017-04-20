@@ -3,7 +3,6 @@ package com.example.asier.vibbay03.Fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -37,16 +36,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-
 public class NewArticleFragment extends Fragment {
 
     private int GALLERY_REQUEST = 1;
     private int CAMERA_REQUEST = 1888;
     private ImageView imageView;
+    private ImageView galleryView;
+    private ImageView resultImage;
     LinearLayout ll;
     EditText nombre;
     EditText precio;
@@ -69,17 +65,24 @@ public class NewArticleFragment extends Fragment {
             }
         });
         imageView = (ImageView) ll.findViewById(R.id.imageTaken);
+        galleryView = (ImageView) ll.findViewById(R.id.galleryTaken);
+        resultImage = (ImageView) ll.findViewById(R.id.resultImage);
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /// Con esto la cogemos de la galeria, camera_request tiene que ser 1
-                //Intent cameraIntent = new Intent();
-                //cameraIntent.setType("image/*");
-                //cameraIntent.setAction(Intent.ACTION_GET_CONTENT);
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-
-                startActivityForResult(Intent.createChooser(cameraIntent, "Elige"), CAMERA_REQUEST);
-                Log.i("CAMARA", "ENTRA A LO SIGUINTE");
+                startActivityForResult(Intent.createChooser(cameraIntent, "Saca una foto"), CAMERA_REQUEST);
+            }
+        });
+        galleryView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cameraIntent = new Intent();
+                cameraIntent.setType("image/*");
+                cameraIntent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(cameraIntent, "Elige de la galería"), GALLERY_REQUEST);
+                Log.i("Galería", "ENTRA A LO SIGUINTE");
             }
         });
 
@@ -89,25 +92,22 @@ public class NewArticleFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
-
-        Log.i("Fragment", "Nuevo artículo mostrado");
     }
 
     private void addArticle(){
         nombre = (EditText) ll.findViewById(R.id.ArticleName);
         precio = (EditText) ll.findViewById(R.id.ArticlePrice);
         String foto64 = ImageTools.encodeToBase64(bm,Bitmap.CompressFormat.JPEG,20);
-        //final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        // Create a storage reference from our app
-        //String name = LoginFireBaseTool.loggedIn.getEmail().substring(0,LoginFireBaseTool.loggedIn.getEmail().indexOf('@'))+new Date().getTime();
         String name = LoginFireBaseTool.loggedIn.getEmail() + new Date().getTime();
         StorageReference storageRef = storage.getReferenceFromUrl("gs://vibbay03-4f198.appspot.com/articulos/"+name+".jpg");
+
         // Get the data from an ImageView as bytes
-        imageView.setDrawingCacheEnabled(true);
-        imageView.buildDrawingCache();
-        Bitmap bitmap = imageView.getDrawingCache();
+        resultImage.setDrawingCacheEnabled(true);
+        resultImage.buildDrawingCache();
+        Bitmap bitmap = resultImage.getDrawingCache();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
@@ -116,7 +116,7 @@ public class NewArticleFragment extends Fragment {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
+                Log.i("ERROR ONUPLOAD",exception.getMessage());
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -132,12 +132,9 @@ public class NewArticleFragment extends Fragment {
                 childUpdates.put("/Articulos/"+LoginFireBaseTool.loggedIn.getEmail()+"/"+nombre.getText(),articuloValues);
                 mDatabase.updateChildren(childUpdates);
 
-                //mDatabase.child("Articulos").setValue(LoginFireBaseTool.loggedIn.getEmail());
-                //mDatabase.child("Articulos").child(LoginFireBaseTool.loggedIn.getEmail()).setValue(nombre.getText().toString());
-                //mDatabase.child("Articulos").child(LoginFireBaseTool.loggedIn.getEmail()).child(nombre.getText().toString()).setValue(a);
                 nombre.setText("");
                 precio.setText("");
-                imageView.setImageResource(R.drawable.ic_menu_camera);
+                resultImage.setImageResource(R.drawable.ic_imagebox);
                 Toast toast = Toast.makeText(getContext(), "Nuevo artículo creado", Toast.LENGTH_SHORT);
                 toast.show();
             }
@@ -146,16 +143,14 @@ public class NewArticleFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.i("VUELTA","ESTA VOLVIENDO AL MISMO ACTIVITY");
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+        if ((requestCode == CAMERA_REQUEST || requestCode == GALLERY_REQUEST) && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
-            Log.i("VUELTA",uri.toString());
             try {
                 bm = ImageTools.getResizedBitmap(MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri),600);
                 bm = ImageTools.rotateBitmap(bm,-90);
-                // Log.d(TAG, String.valueOf(bitmap));
-                imageView.setImageBitmap(bm);
+                resultImage.setImageBitmap(bm);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
