@@ -1,13 +1,17 @@
 package com.example.asier.vibbay03.Fragments;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +36,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +45,7 @@ public class NewArticleFragment extends Fragment {
 
     private int GALLERY_REQUEST = 1;
     private int CAMERA_REQUEST = 1888;
+
     private ImageView imageView;
     private ImageView galleryView;
     private ImageView resultImage;
@@ -82,7 +88,6 @@ public class NewArticleFragment extends Fragment {
                 cameraIntent.setType("image/*");
                 cameraIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(cameraIntent, "Elige de la galería"), GALLERY_REQUEST);
-                Log.i("Galería", "ENTRA A LO SIGUINTE");
             }
         });
 
@@ -123,9 +128,11 @@ public class NewArticleFragment extends Fragment {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                Log.i("Link", downloadUrl.toString());
 
-                Articulo a = new Articulo(nombre.getText().toString(),1,downloadUrl.toString(),Double.parseDouble(precio.getText().toString()));
+                DecimalFormat df = new DecimalFormat("#.00");
+                String pri = df.format(Double.parseDouble(precio.getText().toString()));
+
+                Articulo a = new Articulo(nombre.getText().toString(),1,downloadUrl.toString(),Double.parseDouble(pri));
                 Map<String, Object> articuloValues = a.toMap();
 
                 Map<String, Object> childUpdates = new HashMap<>();
