@@ -39,7 +39,7 @@ import java.util.Map;
 public class NewArticleFragment extends Fragment {
 
     private int GALLERY_REQUEST = 1;
-    private int CAMERA_REQUEST = 1888;
+    private int CAMERA_REQUEST = 0;
     private ImageView imageView;
     private ImageView galleryView;
     private ImageView resultImage;
@@ -71,7 +71,7 @@ public class NewArticleFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
                 startActivityForResult(Intent.createChooser(cameraIntent, "Saca una foto"), CAMERA_REQUEST);
             }
         });
@@ -82,7 +82,6 @@ public class NewArticleFragment extends Fragment {
                 cameraIntent.setType("image/*");
                 cameraIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(cameraIntent, "Elige de la galería"), GALLERY_REQUEST);
-                Log.i("Galería", "ENTRA A LO SIGUINTE");
             }
         });
 
@@ -144,14 +143,25 @@ public class NewArticleFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if ((requestCode == CAMERA_REQUEST || requestCode == GALLERY_REQUEST) && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+        if ((requestCode == CAMERA_REQUEST || requestCode == GALLERY_REQUEST) && resultCode == Activity.RESULT_OK && data != null) {
             Uri uri = data.getData();
             try {
-                bm = ImageTools.getResizedBitmap(MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri),600);
-                bm = ImageTools.rotateBitmap(bm,-90);
+                Log.i("ImageOno", "entra");
+                if(requestCode == CAMERA_REQUEST ){
+                    Log.i("ImageOno", "entra2");
+                    if(data.getData()==null){
+                        Log.i("ImageOno", "entra3");
+                        bm = (Bitmap)data.getExtras().get("data");
+                    }else{
+                        bm = ImageTools.getResizedBitmap(MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri),600);
+                    }
+                }else{
+                    bm = ImageTools.getResizedBitmap(MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri),600);
+                }
                 resultImage.setImageBitmap(bm);
 
             } catch (IOException e) {
+                Log.i("ImageOno", "entro");
                 e.printStackTrace();
             }
         }
