@@ -21,6 +21,12 @@
             android:visible="false"
             />
         <item
+            android:id="@+id/nav_myBids"
+            android:icon="@drawable/ic_action_bid"
+            android:title="Mis Pujas"
+            android:visible="false"
+            />
+        <item
             android:id="@+id/nav_newArticle"
             android:icon="@drawable/ic_new_article"
             android:title="Nuevo Artículo"

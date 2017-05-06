@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.asier.vibbay03.Fragments.AllArticlesFragment;
+import com.example.asier.vibbay03.Fragments.MyBidsFragment;
 import com.example.asier.vibbay03.Fragments.SearchedArticlesFragment;
 import com.example.asier.vibbay03.Fragments.LoginFragment;
 import com.example.asier.vibbay03.Fragments.MyArticlesFragment;
@@ -82,9 +83,7 @@ public class MainActivity extends AppCompatActivity
         int duration = Toast.LENGTH_SHORT;
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }else if(id== R.id.action_search){
+        if(id== R.id.action_search){
             SearchView sv = new SearchView(getSupportActionBar().getThemedContext());
             MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
             MenuItemCompat.setActionView(item, sv);
@@ -148,6 +147,10 @@ public class MainActivity extends AppCompatActivity
                 fragment = new NewArticleFragment();
                 fragmentTransaction = true;
                 break;
+            case R.id.nav_myBids:
+                fragment = new MyBidsFragment();
+                fragmentTransaction = true;
+                break;
             case R.id.nav_main:
                 fragment = new AllArticlesFragment();
                 fragmentTransaction = true;
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_logout:
                 navigationView.getMenu().findItem(R.id.nav_login).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_logout).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_myBids).setVisible(false);
                 navigationView.getMenu().findItem(R.id.nav_myArticles).setVisible(false);
                 navigationView.getMenu().findItem(R.id.nav_newArticle).setVisible(false);
                 fragment = new AllArticlesFragment();

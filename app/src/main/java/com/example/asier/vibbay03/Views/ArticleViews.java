@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.asier.vibbay03.Beans.Articulo;
+import com.example.asier.vibbay03.Beans.Puja;
 import com.example.asier.vibbay03.Fragments.ArticleDetailsFragment;
 import com.example.asier.vibbay03.MainActivity;
 import com.example.asier.vibbay03.Tools.ArticleTools;
@@ -34,6 +35,7 @@ public class ArticleViews {
     public ArticleViews(Articulo art){
         this.art = art;
     }
+    //public ArticleViews(Puja ppuj){this.puj = ppuj;}
 
     public LinearLayout getTinyView(final Context cont){
 
@@ -109,6 +111,13 @@ public class ArticleViews {
             }
         });
 
+        return x;
+    }
+
+
+    public LinearLayout getBidView(final Context cont){
+        //Main layout
+        LinearLayout x = new LinearLayout(cont);
         return x;
     }
 }

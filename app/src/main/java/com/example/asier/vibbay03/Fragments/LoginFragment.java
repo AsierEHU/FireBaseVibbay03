@@ -82,6 +82,7 @@ public class LoginFragment extends Fragment {
 
                     navigation.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigation.getMenu().findItem(R.id.nav_logout).setVisible(true);
+                    navigation.getMenu().findItem(R.id.nav_myBids).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_myArticles).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_newArticle).setVisible(true);
 

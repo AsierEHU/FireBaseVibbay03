@@ -5,17 +5,12 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import com.example.asier.vibbay03.Beans.Articulo;
 import com.example.asier.vibbay03.R;
@@ -98,8 +93,10 @@ public class AllArticlesFragment extends Fragment {
                         DataSnapshot ds = it2.next();
                         Articulo a = ds.getValue(Articulo.class);
                         a.setUserId(usuerId);
-                        ArticleViews av = new ArticleViews(a);
-                        articles.add(av);
+                        if(a.isEstado()==1) {
+                            ArticleViews av = new ArticleViews(a);
+                            articles.add(av);
+                        }
                     }
                 }
                 fl.setAdapter(new ArticleAdapter(articles,getContext()));

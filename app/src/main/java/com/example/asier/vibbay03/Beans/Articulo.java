@@ -15,7 +15,7 @@ public class Articulo {
     private String imagen;
     private double precio;
 
-    /////////////////7
+    /////////////////
     private String userId;
     public void setUserId(String userId){
         this.userId = userId;
