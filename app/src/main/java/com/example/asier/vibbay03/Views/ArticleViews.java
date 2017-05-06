@@ -6,12 +6,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.asier.vibbay03.Beans.Articulo;
+import com.example.asier.vibbay03.Fragments.ArticleDetailsFragment;
+import com.example.asier.vibbay03.MainActivity;
+import com.example.asier.vibbay03.Tools.ArticleTools;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -92,19 +98,15 @@ public class ArticleViews {
 
 
         //
-/*        x.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("OnClick", "entra1");
                 ArticleTools.selectedArticle = art;
                 Fragment art = new ArticleDetailsFragment();
-
-                FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.include_main, art);
-                fragmentTransaction.commit();
-
+                MainActivity.getActualMainActivity().changeFragment(art);
             }
-        });*/
+        });
 
         return x;
     }

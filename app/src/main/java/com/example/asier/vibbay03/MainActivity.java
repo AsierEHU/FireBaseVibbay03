@@ -26,6 +26,7 @@ import com.example.asier.vibbay03.Fragments.NewArticleFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static MainActivity ma;
     private NavigationView navigationView;
 
     @Override
@@ -44,10 +45,11 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        ma = this;
+
         //Llamar a AllArticlesFragment
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.include_main, new AllArticlesFragment())
-                .commit();
+        changeFragment(new AllArticlesFragment());
+
     }
 
     @Override
@@ -85,11 +87,7 @@ public class MainActivity extends AppCompatActivity
 
                     SearchedArticlesFragment frag = new SearchedArticlesFragment();
                     frag.showSearchedArticles(query);
-                    Log.i("Cambios","ENTRA AL SUBIR");
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.include_main, frag)
-                            .commit();
-                    Log.i("Cambios","sale del subir");
+                    changeFragment(frag);
                     return false;
                 }
 
@@ -98,9 +96,7 @@ public class MainActivity extends AppCompatActivity
                     /*SearchedArticlesFragment frag = new SearchedArticlesFragment();
                     frag.showSearchedArticles(newText);
                     Log.i("Cambios","ENTRA AL SUBIR");
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.include_main, frag)
-                            .commit();*/
+                    changeFragment(frag);*/
                     Log.i("Cambios","sale del subir");
                     return false;
                 }
@@ -114,15 +110,16 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onViewDetachedFromWindow(View v) {
                     AllArticlesFragment frag = new AllArticlesFragment();
-                    Log.i("Cambios","ENTRA AL cerrar");
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.include_main, frag)
-                            .commit();
+                    changeFragment(frag);
                 }
             });
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static MainActivity getActualMainActivity(){
+        return ma;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -159,13 +156,17 @@ public class MainActivity extends AppCompatActivity
         }
 
         if(fragmentTransaction) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.include_main, fragment)
-                    .commit();
+            changeFragment(fragment);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void changeFragment(Fragment x){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.include_main, x)
+                .commit();
     }
 }

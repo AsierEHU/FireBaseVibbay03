@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -98,21 +99,30 @@ public class AllArticlesFragment extends Fragment {
                         Articulo a = ds.getValue(Articulo.class);
                         a.setUserId(usuerId);
                         ArticleViews av = new ArticleViews(a);
-                        av.getTinyView(getContext()).getChildAt(3).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Log.i("OnClick", "entra");
-                                Fragment art = new ArticleDetailsFragment();
-                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                fragmentTransaction.replace(R.id.include_main, art);
-                                fragmentTransaction.commit();
-                            }
-                        });
+//                        av.getTinyView(getContext()).getChildAt(3).setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//
+//                                Fragment art = new ArticleDetailsFragment();
+//                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                                fragmentTransaction.replace(R.id.include_main, art);
+//                                fragmentTransaction.commit();
+//                            }
+//                        });
                         articles.add(av);
                     }
                 }
                 fl.setAdapter(new ArticleAdapter(articles,getContext()));
+//                Log.i("OnClick", "entra1");
+//                fl.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        Log.i("OnClick", "entra");
+//                        View x = view;
+//                    }
+//                });
+//                Log.i("OnClick", "entra2");
             }
 
             @Override

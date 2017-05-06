@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.asier.vibbay03.Beans.Usuario;
+import com.example.asier.vibbay03.MainActivity;
 import com.example.asier.vibbay03.R;
 import com.example.asier.vibbay03.Tools.LoginFireBaseTool;
 import com.google.firebase.database.DataSnapshot;
@@ -78,14 +79,14 @@ public class LoginFragment extends Fragment {
                     LoginFireBaseTool.loggedIn = u;
                     loginMessage = Toast.makeText(getContext(), "LOGIN CORRECTO", Toast.LENGTH_SHORT);
                     allArticles = new AllArticlesFragment();
-                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
                     navigation.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigation.getMenu().findItem(R.id.nav_logout).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_myArticles).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_newArticle).setVisible(true);
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.include_main, allArticles);
-                    fragmentTransaction.commit();
+
+                    MainActivity.getActualMainActivity().changeFragment(allArticles);
+
                 } else {
                     Log.i("Login", "No hay usuario");
                     loginMessage = Toast.makeText(getContext(), "USER OR PASSWORD INVALID", Toast.LENGTH_SHORT);
