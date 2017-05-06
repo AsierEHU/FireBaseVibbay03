@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity
 
     private static MainActivity ma;
     private NavigationView navigationView;
+    private Fragment lastFrag;
+    private Fragment actualFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Fragment frag = new AllArticlesFragment();
+        lastFrag = frag;
+        actualFragment = frag;
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,12 +59,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        Log.i("OnBack", "entra");
+        changeFragment(lastFrag);
+        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
+        }*/
     }
 
     @Override
@@ -165,8 +172,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void changeFragment(Fragment x){
+        lastFrag = actualFragment;
+        actualFragment = x;
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.include_main, x)
                 .commit();
     }
+
 }

@@ -64,8 +64,8 @@ public class ArticleViews {
         TextView name = new TextView(x.getContext());
         name.setText(art.getUserId());
 
-        Button b = new Button(x.getContext());
-        b.setText("Ver");
+     /*   Button b = new Button(x.getContext());
+        b.setText("Ver");*/
 
 
         //Imagen
@@ -94,11 +94,12 @@ public class ArticleViews {
 
         x.addView(imagen);
         //x.addView(name);
-        x.addView(b);
+      //  x.addView(b);
 
 
         //
-        b.setOnClickListener(new View.OnClickListener() {
+        //x.setOnClickListener();
+        x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i("OnClick", "entra1");
