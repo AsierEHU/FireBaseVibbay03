@@ -6,9 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.text.Layout;
-import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,7 +29,7 @@ public class ArticleViews {
         this.art = art;
     }
 
-    public LinearLayout getTinyView(Context cont){
+    public LinearLayout getTinyView(final Context cont){
 
         //Main layout
         LinearLayout x = new LinearLayout(cont);
@@ -52,9 +50,17 @@ public class ArticleViews {
         nombre.setText(art.getTitulo());
         nombre.setTypeface(null, Typeface.BOLD);
 
-        //precio
+        //precioBase
         TextView precio = new TextView(x.getContext());
         precio.setText(String.format("%1$,.2f€", art.getPrecio()));
+
+        //precioUltimo
+        TextView name = new TextView(x.getContext());
+        name.setText(art.getUserId());
+
+        Button b = new Button(x.getContext());
+        b.setText("Ver");
+
 
         //Imagen
         final ImageView imagen = new ImageView(x.getContext());
@@ -76,11 +82,29 @@ public class ArticleViews {
             }
         });
 
-
         //add views
         x.addView(nombre);
         x.addView(precio);
+
         x.addView(imagen);
+        //x.addView(name);
+        x.addView(b);
+
+
+        //
+/*        x.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArticleTools.selectedArticle = art;
+                Fragment art = new ArticleDetailsFragment();
+
+                FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.include_main, art);
+                fragmentTransaction.commit();
+
+            }
+        });*/
 
         return x;
     }

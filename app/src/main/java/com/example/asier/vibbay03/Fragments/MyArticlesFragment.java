@@ -56,6 +56,7 @@ public class MyArticlesFragment extends Fragment {
                 while (it2.hasNext()) {
                     DataSnapshot ds = it2.next();
                     Articulo a = ds.getValue(Articulo.class);
+                    a.setUserId(LoginFireBaseTool.loggedIn.getEmail());
                     ArticleViews av = new ArticleViews(a);
                     articles.add(av);
                 }

@@ -5,17 +5,16 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.GridLayout;
+import android.widget.Button;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.asier.vibbay03.Beans.Articulo;
 import com.example.asier.vibbay03.R;
@@ -91,15 +90,28 @@ public class AllArticlesFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator();
                 while(it.hasNext()){
-                    Iterator<DataSnapshot> it2 = it.next().getChildren().iterator();
+                    DataSnapshot dName = it.next();
+                    String usuerId = dName.getKey();
+                    Iterator<DataSnapshot> it2 = dName.getChildren().iterator();
                     while(it2.hasNext()){
                         DataSnapshot ds = it2.next();
                         Articulo a = ds.getValue(Articulo.class);
+                        a.setUserId(usuerId);
                         ArticleViews av = new ArticleViews(a);
+                        av.getTinyView(getContext()).getChildAt(3).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Log.i("OnClick", "entra");
+                                Fragment art = new ArticleDetailsFragment();
+                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.include_main, art);
+                                fragmentTransaction.commit();
+                            }
+                        });
                         articles.add(av);
                     }
                 }
-
                 fl.setAdapter(new ArticleAdapter(articles,getContext()));
             }
 
@@ -111,3 +123,4 @@ public class AllArticlesFragment extends Fragment {
         });
     }
 }
+

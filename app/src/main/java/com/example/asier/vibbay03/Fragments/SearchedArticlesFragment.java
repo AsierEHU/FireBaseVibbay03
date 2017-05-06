@@ -56,10 +56,13 @@ public class SearchedArticlesFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator();
                 while(it.hasNext()){
-                    Iterator<DataSnapshot> it2 = it.next().getChildren().iterator();
+                    DataSnapshot dName = it.next();
+                    String usuerId = dName.getKey();
+                    Iterator<DataSnapshot> it2 = dName.getChildren().iterator();
                     while(it2.hasNext()){
                         DataSnapshot ds = it2.next();
                         Articulo a = ds.getValue(Articulo.class);
+                        a.setUserId(usuerId);
                         Log.i("SEARCH", "Entra antes if con artículo " + a.getTitulo());
                         if(a.getTitulo().contains(query)){
                             ArticleViews av = new ArticleViews(a);
