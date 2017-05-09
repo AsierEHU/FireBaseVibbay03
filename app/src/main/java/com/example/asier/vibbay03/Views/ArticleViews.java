@@ -3,27 +3,40 @@ package com.example.asier.vibbay03.Views;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.asier.vibbay03.Beans.Articulo;
 import com.example.asier.vibbay03.Beans.Puja;
 import com.example.asier.vibbay03.Fragments.ArticleDetailsFragment;
 import com.example.asier.vibbay03.MainActivity;
+import com.example.asier.vibbay03.R;
 import com.example.asier.vibbay03.Tools.ArticleTools;
+import com.example.asier.vibbay03.Tools.LoginFireBaseTool;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by asier on 20/04/2017.
@@ -56,19 +69,61 @@ public class ArticleViews {
         //nombre
         TextView nombre = new TextView(x.getContext());
         nombre.setText(art.getTitulo());
+        if(art.isEstado()==1){
+            Log.i("","");
+            //nombre.setTextColor(Color.BLACK);
+        }
+        else{
+            nombre.setTextColor(Color.RED);
+        }
         nombre.setTypeface(null, Typeface.BOLD);
 
+
         //precioBase
-        TextView precio = new TextView(x.getContext());
-        precio.setText("Precio base: " + String.format("%1$,.2f€", art.getPrecio()));
-        precio.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
+        TextView inicial = new TextView(x.getContext());
+        inicial.setText("Precio base:");
+        inicial.setTypeface(null, Typeface.ITALIC);
+        //inicial.setPaintFlags(inicial.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        TextView precioInicial = new TextView(x.getContext());
+        precioInicial.setText(String.format("%1$,.2f€", art.getPrecio()));
+
+
+        View ruler = new View(x.getContext()); ruler.setBackgroundColor(Color.BLACK);
+
 
         //precioUltimo
-        TextView name = new TextView(x.getContext());
-        name.setText(art.getUserId());
 
-     /*   Button b = new Button(x.getContext());
-        b.setText("Ver");*/
+        TextView ultimo = new TextView(x.getContext());
+        ultimo.setText("Último:");
+        ultimo.setTypeface(null, Typeface.ITALIC);
+        //ultimo.setPaintFlags(ultimo.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        final TextView ultimoPrecio = new TextView(x.getContext());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        Log.i("ArtViews","entra0");
+        DatabaseReference BidsReference = database.getReference("Pujas");
+        Log.i("ArtViews","entra1");
+        BidsReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.i("ArtViews","entra2");
+                Puja p = ArticleTools.getHigherBidPrice(art,dataSnapshot);
+                if(p!=null){
+                    Log.i("ArtViews","entra3");
+                    Log.i("ArtViews", p.toString());
+                    ultimoPrecio.setText(String.format("%1$,.2f€", p.getPrecio()));
+
+                }else{
+                    ultimoPrecio.setText(String.format("Sin pujas"));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i("error", databaseError.getDetails());
+            }
+        });
 
 
         //Imagen
@@ -93,9 +148,14 @@ public class ArticleViews {
 
         //add views
         x.addView(nombre);
-        x.addView(precio);
+        x.addView(ruler, new ViewGroup.LayoutParams( ViewGroup.LayoutParams.MATCH_PARENT, 2));
+        x.addView(inicial);
+        x.addView(precioInicial);
+        //
 
         x.addView(imagen);
+        x.addView(ultimo);
+        x.addView(ultimoPrecio);
         //x.addView(name);
       //  x.addView(b);
 
@@ -114,7 +174,6 @@ public class ArticleViews {
 
         return x;
     }
-
 
     public LinearLayout getBidView(final Context cont){
             //Main layout
@@ -163,10 +222,11 @@ public class ArticleViews {
             x.addView(nombre);
             x.addView(imagen);
 
-
+            int i = 1;
             for(Puja p: art.getArt_pujas()){
                 TextView precioPuja = new TextView(x.getContext());
-                precioPuja.setText(String.format("%1$,.2f€", p.getPrecio()));
+                precioPuja.setText(i + ": " + String.format("%1$,.2f€", p.getPrecio()));
+                i++;
                 x.addView(precioPuja);
             }
 
