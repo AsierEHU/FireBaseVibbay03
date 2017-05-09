@@ -39,6 +39,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -163,19 +165,25 @@ public class ArticleDetailsFragment extends Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             List<Puja> x = ArticleTools.getHistoricalBids(articulo, dataSnapshot);
+                            Collections.sort(x, new Comparator<Puja>() {
+                                @Override
+                                public int compare(Puja o1, Puja o2) {
+                                    if(o1.getPrecio() > o2.getPrecio()){
+                                        return 1;
+                                    }else if(o1.getPrecio() < o2.getPrecio()){
+                                        return -1;
+                                    }else{
+                                        return 0;
+                                    }
+                                }
+                            });
                             LinearLayout ll = (LinearLayout)sv.findViewById(R.id.bidsLayout);
                             ll.removeAllViews();
                             double lastPrice = -1;
                             for(Puja p:x){
                                 TextView tv = new TextView(getContext());
                                 tv.setText(p.getIdUsuario()+" - "+String.format("%1$,.2f€", p.getPrecio()));
-                                ll.addView(tv,0);
-//                                if(p.getPrecio()>lastPrice){
-//                                    ll.addView(tv,1);
-//                                }else{
-//                                    ll.addView(tv,0);
-//                                }
-                                lastPrice = p.getPrecio();
+                                ll.addView(tv);
                             }
 
                         }
