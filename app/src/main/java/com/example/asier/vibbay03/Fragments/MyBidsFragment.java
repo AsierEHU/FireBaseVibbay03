@@ -101,6 +101,7 @@ public class MyBidsFragment  extends Fragment {
                         for (String entry : pujasDiferentes.keySet()) {
                             if(a.getTitulo().equals(entry)){
                                 Log.i("Pujas", "Fin fin "+ a.getTitulo() + a.getPrecio());
+                                a.setArt_pujas(pujasDiferentes.get(entry));
                                 ArticleViews av = new ArticleViews(a);
                                 articles.add(av);
                             }

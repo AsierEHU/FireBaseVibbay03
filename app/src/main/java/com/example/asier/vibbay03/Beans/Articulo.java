@@ -3,6 +3,7 @@ package com.example.asier.vibbay03.Beans;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,16 @@ public class Articulo {
     private int estado;
     private String imagen;
     private double precio;
+
+    /////////////////
+    private ArrayList<Puja> art_pujas;
+    public void setArt_pujas(ArrayList<Puja> p){
+        this.art_pujas = p;
+    }
+    public ArrayList<Puja> getArt_pujas(){
+        return this.art_pujas;
+    }
+    //////////////////
 
     /////////////////
     private String userId;

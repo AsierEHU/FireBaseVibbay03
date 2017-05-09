@@ -8,6 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -35,7 +36,6 @@ public class ArticleViews {
     public ArticleViews(Articulo art){
         this.art = art;
     }
-    //public ArticleViews(Puja ppuj){this.puj = ppuj;}
 
     public LinearLayout getTinyView(final Context cont){
 
@@ -60,7 +60,8 @@ public class ArticleViews {
 
         //precioBase
         TextView precio = new TextView(x.getContext());
-        precio.setText(String.format("%1$,.2f€", art.getPrecio()));
+        precio.setText("Precio base: " + String.format("%1$,.2f€", art.getPrecio()));
+        precio.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
 
         //precioUltimo
         TextView name = new TextView(x.getContext());
@@ -160,8 +161,16 @@ public class ArticleViews {
 
             //add views
             x.addView(nombre);
-            x.addView(precio);
             x.addView(imagen);
+
+
+            for(Puja p: art.getArt_pujas()){
+                TextView precioPuja = new TextView(x.getContext());
+                precioPuja.setText(String.format("%1$,.2f€", p.getPrecio()));
+                x.addView(precioPuja);
+            }
+
+
             x.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
