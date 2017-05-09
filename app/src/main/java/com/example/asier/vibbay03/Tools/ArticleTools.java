@@ -12,7 +12,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by asier on 02/05/2017.
@@ -20,6 +25,23 @@ import java.util.Iterator;
 
 public class ArticleTools {
     public static Articulo selectedArticle;
+
+
+    public static void pujar(Articulo art, double precio){
+        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        Long id = new Date().getTime();
+        Puja p = new Puja(precio);
+        p.setIdArt(art.getTitulo());
+        p.setIdUsuario(LoginFireBaseTool.loggedIn.getEmail());
+
+        Map<String, Object> pujaValues = p.toMap();
+
+        Map<String, Object> childPujas = new HashMap<>();
+        childPujas.put("/Pujas/"+p.getIdUsuario()+"/"+p.getIdArt()+"/"+id,pujaValues);
+        mDatabase.updateChildren(childPujas);
+
+
+    }
 
     public static Puja getUserArtHigherPrice(DataSnapshot pujasArts, String userId, String artId){
         Puja biggerBidClass = null;
@@ -40,6 +62,33 @@ public class ArticleTools {
 
         return biggerBidClass;
 
+    }
+
+    public static List<Puja> getHistoricalBids(Articulo art, DataSnapshot pujas){
+        ArrayList<Puja> pujaslist = new ArrayList<>();
+        final HashMap<String,ArrayList<Puja>> pujasDiferentes = new HashMap<>();
+        Iterator<DataSnapshot> usuarios = pujas.getChildren().iterator();
+        while (usuarios.hasNext()) {
+            DataSnapshot usuario = usuarios.next();
+            String usu_id = usuario.getKey();
+            Iterator<DataSnapshot> articulos = usuario.getChildren().iterator();
+            while (articulos.hasNext()){
+                DataSnapshot articuloDS = articulos.next();
+                String art_id = articuloDS.getKey();
+                if(art_id.equals(art.getTitulo())){
+                    Iterator<DataSnapshot> pujasDS = articuloDS.getChildren().iterator();
+                    while(pujasDS.hasNext()){
+                        DataSnapshot puja = pujasDS.next();
+                        Puja p = puja.getValue(Puja.class);
+                        p.setIdUsuario(usu_id);
+                        p.setIdArt(art_id);
+                        pujaslist.add(p);
+                    }
+                }
+
+            }
+        }
+        return pujaslist;
     }
 
     public static Puja getHigherBidPrice(Articulo art, DataSnapshot pujas) {

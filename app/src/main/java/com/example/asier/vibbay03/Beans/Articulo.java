@@ -17,6 +17,18 @@ public class Articulo {
     private double precio;
 
     /////////////////
+    private double max_puja;
+
+    public double getMax_puja() {
+        return max_puja;
+    }
+
+    public void setMax_puja(double max_puja) {
+        this.max_puja = max_puja;
+    }
+    /////////////////
+
+    /////////////////
     private ArrayList<Puja> art_pujas;
     public void setArt_pujas(ArrayList<Puja> p){
         this.art_pujas = p;
