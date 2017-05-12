@@ -24,6 +24,18 @@
             android:layout_width="700px"
             android:layout_height="700px" />
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Precios"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/holo_blue_light"/>
+
         <TextView
             android:id="@+id/initialprice"
             android:layout_width="match_parent"
@@ -39,10 +51,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Acciones"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/holo_blue_light"/>
+
         <Button
             android:id="@+id/genericbutton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
+
+        <TextView
+            android:id="@+id/bidshistorical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Historial de pujas"
+            android:visibility="invisible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/holo_blue_light"
+            />
 
         <LinearLayout
             android:id="@+id/bidsLayout"

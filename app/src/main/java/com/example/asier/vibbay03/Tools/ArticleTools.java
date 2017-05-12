@@ -34,20 +34,27 @@ import java.util.Map;
  */
 
 public class ArticleTools {
+
     public static Articulo selectedArticle;
 
-    public static void onArticleStateChange(Articulo art, String userId, ArticleExec ae){
+    public static void onArticleStateChange(final Articulo art, final ArticleExec ae){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("Articulos/"+userId+"/"+art.getTitulo());
+        DatabaseReference reference = database.getReference("Articulos/"+art.getUserId()+"/"+art.getTitulo());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                Log.i("asd",dataSnapshot.getKey());
+                Articulo a = dataSnapshot.getValue(Articulo.class);
+                a.setMax_puja(art.getMax_puja());
+                a.setUserId(art.getUserId());
+                a.setArt_pujas(art.getArt_pujas());
+                ae.execAction(a);
+                ae.onFinish();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.i("error", databaseError.getDetails());
             }
         });
     }

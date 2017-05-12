@@ -1,6 +1,7 @@
 package com.example.asier.vibbay03.Fragments;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.asier.vibbay03.Beans.Articulo;
 import com.example.asier.vibbay03.Beans.Puja;
+import com.example.asier.vibbay03.FBLoopers.ArticleExec;
 import com.example.asier.vibbay03.FBLoopers.BidExec;
 import com.example.asier.vibbay03.FBLoopers.BidLooper;
 import com.example.asier.vibbay03.MainActivity;
@@ -60,7 +62,7 @@ public class ArticleDetailsFragment extends Fragment {
 
 
     @Override
-    public void onActivityCreated(Bundle state){
+    public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
         SetViewAticle();
     }
@@ -75,22 +77,22 @@ public class ArticleDetailsFragment extends Fragment {
 
         //image
         final ImageView i = (ImageView) sv.findViewById(R.id.imageArt);
-        ImageTools.fillImageBitmap(articulo.getImagen(),i);
+        ImageTools.fillImageBitmap(articulo.getImagen(), i);
 
         //Price
         TextView ip = (TextView) sv.findViewById(R.id.initialprice);
-        ip.setText("Precio inicial: " +String.format("%1$,.2f€", articulo.getPrecio()));
+        ip.setText("Precio inicial: " + String.format("%1$,.2f€", articulo.getPrecio()));
 
         //last Bid and show bids
         double lastBid = 0;
         final TextView lb = (TextView) sv.findViewById(R.id.lastbid);
-        final LinearLayout ll = (LinearLayout)sv.findViewById(R.id.bidsLayout);
+        final LinearLayout ll = (LinearLayout) sv.findViewById(R.id.bidsLayout);
 
         final ArrayList<Puja> pujasArt = new ArrayList<>();
         BidLooper.forEachBidOnChange(new BidExec() {
             @Override
             public void execAction(Puja p) {
-                if(p.getIdArt().equals(articulo.getTitulo())){
+                if (p.getIdArt().equals(articulo.getTitulo())) {
                     pujasArt.add(p);
                 }
             }
@@ -100,27 +102,33 @@ public class ArticleDetailsFragment extends Fragment {
 
                 //last bid
                 Puja p = BidTools.getHigherBidFromList(pujasArt);
-                if(p!=null){
+                if (p != null) {
                     articulo.setMax_puja(p.getPrecio());
-                    lb.setText("Puja más alta: "+String.format("%1$,.2f€", p.getPrecio()));
+                    lb.setText("Puja más alta: " + String.format("%1$,.2f€", p.getPrecio()));
                 }
 
                 //show bids
-                if(LoginFireBaseTool.loggedIn!=null && articulo.getUserId().equals(LoginFireBaseTool.loggedIn.getEmail())){
+                if (LoginFireBaseTool.loggedIn != null && articulo.getUserId().equals(LoginFireBaseTool.loggedIn.getEmail())) {
+                    ((TextView) sv.findViewById(R.id.bidshistorical)).setVisibility(View.VISIBLE);
                     BidTools.orderListByPrice(pujasArt);
                     ll.removeAllViews();
-                    double lastPrice = -1;
-                    for(Puja p1:pujasArt){
+                    if (pujasArt.isEmpty()) {
                         TextView tv = new TextView(getContext());
-                        tv.setText(p1.getIdUsuario()+" - "+String.format("%1$,.2f€", p1.getPrecio()));
+                        tv.setText("No existen pujas");
                         ll.addView(tv);
+                    } else {
+                        for (Puja p1 : pujasArt) {
+                            TextView tv = new TextView(getContext());
+                            tv.setText(p1.getIdUsuario() + " - " + String.format("%1$,.2f€", p1.getPrecio()));
+                            ll.addView(tv);
+                        }
                     }
                 }
             }
         });
 
         //My last bid
-        if(LoginFireBaseTool.loggedIn != null && !articulo.getUserId().equals(LoginFireBaseTool.loggedIn.getEmail())) {
+        if (LoginFireBaseTool.loggedIn != null && !articulo.getUserId().equals(LoginFireBaseTool.loggedIn.getEmail())) {
             final TextView mlb = (TextView) sv.findViewById(R.id.mylastbid);
             final ArrayList<Puja> pujasUserArt = new ArrayList<>();
 
@@ -133,8 +141,8 @@ public class ArticleDetailsFragment extends Fragment {
                 @Override
                 public void onFinish() {
                     Puja p = BidTools.getHigherBidFromList(pujasUserArt);
-                    if(p!=null){
-                        mlb.setText("Mi puja más alta: "+String.format("%1$,.2f€", p.getPrecio()));
+                    if (p != null) {
+                        mlb.setText("Mi puja más alta: " + String.format("%1$,.2f€", p.getPrecio()));
                     }
                 }
             }, articulo, LoginFireBaseTool.loggedIn.getEmail());
@@ -145,7 +153,7 @@ public class ArticleDetailsFragment extends Fragment {
         final Button b = (Button) sv.findViewById(R.id.genericbutton);
 
         //Login ( si no estas loggueado)
-        if(LoginFireBaseTool.loggedIn == null){
+        if (LoginFireBaseTool.loggedIn == null) {
             b.setText("Login");
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -154,69 +162,71 @@ public class ArticleDetailsFragment extends Fragment {
                 }
             });
 
-        //Pujar ( si el articulo no es tuyo)
-        }else if (LoginFireBaseTool.loggedIn.getEmail()!=articulo.getUserId()){
-            if(articulo.isEstado()==1){
-                b.setText("Pujar");
-                b.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            //Pujar ( si el articulo no es tuyo)
+        } else if (LoginFireBaseTool.loggedIn.getEmail() != articulo.getUserId()) {
+            ArticleTools.onArticleStateChange(articulo, new ArticleExec() {
+                @Override
+                public void execAction(Articulo a) {
+                    if (a.isEstado() == 1) {
+                        b.setText("Pujar");
+                        b.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                                alert.setTitle("Nueva puja");
+                                alert.setMessage("Indique el precio de su puja");
+                                final EditText input = new EditText(getContext());
+                                input.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                                alert.setView(input);
+                                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        try {
+                                            double price = Double.valueOf(input.getText().toString());
+                                            if (price <= Math.max(articulo.getMax_puja(), articulo.getPrecio())) {
+                                                Toast toast = Toast.makeText(getContext(), "La puja debe ser mayor que " + String.format("%1$,.2f€", Math.max(articulo.getMax_puja(), articulo.getPrecio())), Toast.LENGTH_SHORT);
+                                                toast.show();
+                                            } else {
+                                                ArticleTools.pujar(articulo, price);
+                                                Toast toast = Toast.makeText(getContext(), "Puja realizada correctamente", Toast.LENGTH_SHORT);
+                                                toast.show();
+                                            }
+                                        } catch (Exception e) {
+                                            Toast toast = Toast.makeText(getContext(), "Error, ninguna puja insertada", Toast.LENGTH_SHORT);
+                                            toast.show();
+                                        }
 
-                        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-
-                        alert.setTitle("Nueva puja");
-                        alert.setMessage("Indique el precio de su puja");
-
-                        final EditText input = new EditText(getContext());
-                        input.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-                        alert.setView(input);
-
-                        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-
-                                double price = Double.valueOf(input.getText().toString());
-                                if(price<=Math.max(articulo.getMax_puja(),articulo.getPrecio())){
-                                    Toast toast = Toast.makeText(getContext(), "La puja debe ser mayor que "+String.format("%1$,.2f€",Math.max(articulo.getMax_puja(),articulo.getPrecio())), Toast.LENGTH_SHORT);
-                                    toast.show();
-                                }else{
-                                    ArticleTools.pujar(articulo, price );
-                                    Toast toast = Toast.makeText(getContext(), "Puja realizada correctamente", Toast.LENGTH_SHORT);
-                                    toast.show();
-                                }
-
-
+                                    }
+                                });
+                                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        // Canceled.
+                                    }
+                                });
+                                alert.show();
                             }
                         });
-
-                        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                // Canceled.
-                            }
-                        });
-
-                        alert.show();
-
-
-                        //comprobar que la puja no es más alta
-
+                    } else {
+                        b.setText("Pujas cerradas");
+                        b.setEnabled(false);
                     }
-                });
-            }else{
-                b.setText("Pujas cerradas");
-                b.setEnabled(false);
-            }
+                }
 
-        //Cerrar pujas ( si el articulo es tuyo)
-        }else{
-            if(articulo.isEstado()==0){
+                @Override
+                public void onFinish() {
+                }
+            });
+
+            //Cerrar pujas ( si el articulo es tuyo)
+        } else {
+            if (articulo.isEstado() == 0) {
                 b.setText("Pujas cerradas");
                 b.setEnabled(false);
-            }else{
+            } else {
                 b.setText("Cerrar pujas");
                 b.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        database.getReference("Articulos/"+ articulo.getUserId()+"/"+articulo.getTitulo()+"/estado").setValue(0);
+                        database.getReference("Articulos/" + articulo.getUserId() + "/" + articulo.getTitulo() + "/estado").setValue(0);
                         b.setText("Pujas cerradas");
                         b.setEnabled(false);
                     }
