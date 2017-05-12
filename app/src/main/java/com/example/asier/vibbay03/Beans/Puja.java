@@ -18,11 +18,9 @@ public class Puja {
 
     public Puja(){
     }
-
     public Puja(double pprecio){
         this.precio = pprecio;
     }
-
     public double getPrecio(){
         return this.precio;
     }

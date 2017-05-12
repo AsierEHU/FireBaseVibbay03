@@ -1,5 +1,7 @@
 package com.example.asier.vibbay03.Beans;
 
+import android.graphics.Bitmap;
+
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -18,11 +20,9 @@ public class Articulo {
 
     /////////////////
     private double max_puja;
-
     public double getMax_puja() {
         return max_puja;
     }
-
     public void setMax_puja(double max_puja) {
         this.max_puja = max_puja;
     }

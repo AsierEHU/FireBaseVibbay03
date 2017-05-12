@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,20 +13,15 @@ import android.widget.GridView;
 
 import com.example.asier.vibbay03.Beans.Articulo;
 import com.example.asier.vibbay03.R;
+import com.example.asier.vibbay03.FBLoopers.ArticleExec;
+import com.example.asier.vibbay03.FBLoopers.ArticleLooper;
 import com.example.asier.vibbay03.Views.ArticleAdapter;
 import com.example.asier.vibbay03.Views.ArticleViews;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class AllArticlesFragment extends Fragment {
+public class AllArticlesFragment extends ArticlesFragment {
 
-    GridView fl;
     int MY_PERMISSIONS_REQUEST;
 
     public AllArticlesFragment() {
@@ -35,20 +29,12 @@ public class AllArticlesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        fl =(GridView) inflater.inflate(R.layout.fragment_allarticles, container, false);
-        return fl;
-
-    }
-    @Override
     public void onActivityCreated(Bundle state){
         super.onActivityCreated(state);
 
+        //Permisions
         String[] permissions;
         ArrayList<String> per = new ArrayList<>();
-
         if (ContextCompat.checkSelfPermission(getContext(),
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -56,7 +42,6 @@ public class AllArticlesFragment extends Fragment {
             per.add(Manifest.permission.CAMERA);
 
             }
-
         if (ContextCompat.checkSelfPermission(getContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -64,50 +49,32 @@ public class AllArticlesFragment extends Fragment {
             per.add(Manifest.permission.READ_EXTERNAL_STORAGE);
 
         }
-
         permissions = new String[per.size()];
         for(int i=0; i<per.size(); i++){
             permissions[i] = per.get(i);
         }
-
         if(permissions.length>0){
             ActivityCompat.requestPermissions(getActivity(),
                     permissions,
                     MY_PERMISSIONS_REQUEST);
         }
 
-
+        //articles show
         final ArrayList<ArticleViews> articles = new ArrayList<>();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("Articulos");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        ArticleLooper.forEachArticlesOnce(new ArticleExec() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator();
-                while(it.hasNext()){
-                    DataSnapshot dName = it.next();
-                    String usuerId = dName.getKey();
-                    Iterator<DataSnapshot> it2 = dName.getChildren().iterator();
-                    while(it2.hasNext()){
-                        DataSnapshot ds = it2.next();
-                        Articulo a = ds.getValue(Articulo.class);
-                        a.setUserId(usuerId);
-                        if(a.isEstado()==1) {
-                            ArticleViews av = new ArticleViews(a);
-                            articles.add(av);
-                        }
-                    }
+            public void execAction(Articulo a) {
+                if(a.isEstado()==1) {
+                    ArticleViews av = new ArticleViews(a);
+                    articles.add(av);
                 }
+            }
+            @Override
+            public void onFinish() {
                 fl.setAdapter(new ArticleAdapter(articles,getContext()));
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i("Login error", databaseError.getDetails());
-                Log.i("Login message", databaseError.getMessage());
-            }
         });
+
     }
 }
 

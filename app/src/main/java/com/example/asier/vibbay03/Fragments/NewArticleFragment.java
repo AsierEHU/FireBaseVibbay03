@@ -122,7 +122,6 @@ public class NewArticleFragment extends Fragment {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                Log.i("Link", downloadUrl.toString());
 
              //   DecimalFormat df = new DecimalFormat("#.00");
             //    String pri = df.format(Double.parseDouble(precio.getText().toString()));
@@ -151,11 +150,8 @@ public class NewArticleFragment extends Fragment {
         if ((requestCode == CAMERA_REQUEST || requestCode == GALLERY_REQUEST) && resultCode == Activity.RESULT_OK && data != null) {
             Uri uri = data.getData();
             try {
-                Log.i("ImageOno", "entra");
                 if(requestCode == CAMERA_REQUEST ){
-                    Log.i("ImageOno", "entra2");
                     if(data.getData()==null){
-                        Log.i("ImageOno", "entra3");
                         bm = (Bitmap)data.getExtras().get("data");
                     }else{
                         bm = ImageTools.getResizedBitmap(MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri),600);
@@ -166,7 +162,6 @@ public class NewArticleFragment extends Fragment {
                 resultImage.setImageBitmap(bm);
 
             } catch (IOException e) {
-                Log.i("ImageOno", "entro");
                 e.printStackTrace();
             }
         }

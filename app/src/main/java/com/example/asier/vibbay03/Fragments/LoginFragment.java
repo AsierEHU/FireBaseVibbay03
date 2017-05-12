@@ -3,15 +3,12 @@ package com.example.asier.vibbay03.Fragments;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -58,7 +55,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle state){
         super.onActivityCreated(state);
-        Log.i("Fragment","Login fragment terminado");
     }
 
 
@@ -86,7 +82,7 @@ public class LoginFragment extends Fragment {
                     navigation.getMenu().findItem(R.id.nav_myArticles).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_newArticle).setVisible(true);
 
-                    MainActivity.getActualMainActivity().changeFragment(allArticles);
+                    MainActivity.getActualMainActivity().lastFragment();
 
                 } else {
                     Log.i("Login", "No hay usuario");

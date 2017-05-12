@@ -18,60 +18,31 @@
             android:gravity="center"
             android:textSize="40sp" />
 
-        <LinearLayout
-            android:id="@+id/description"
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imageArt"
+            android:layout_width="700px"
+            android:layout_height="700px" />
+
+        <TextView
+            android:id="@+id/initialprice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/imageArt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:id="@+id/properties"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/initialprice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/lastbid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/mylastbid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/parentbuttons"
+        <TextView
+            android:id="@+id/lastbid"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/genericbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/mylastbid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/closebids"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cerrar pujas"
-                android:visibility="invisible" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/genericbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/bidsLayout"

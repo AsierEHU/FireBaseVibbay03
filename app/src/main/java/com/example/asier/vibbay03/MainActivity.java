@@ -24,13 +24,15 @@ import com.example.asier.vibbay03.Fragments.LoginFragment;
 import com.example.asier.vibbay03.Fragments.MyArticlesFragment;
 import com.example.asier.vibbay03.Fragments.NewArticleFragment;
 
+import java.util.EmptyStackException;
+import java.util.Stack;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static MainActivity ma;
     private NavigationView navigationView;
-    private Fragment lastFrag;
-    private Fragment actualFragment;
+    Stack<Fragment> framgentStack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +40,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Fragment frag = new AllArticlesFragment();
-        lastFrag = frag;
-        actualFragment = frag;
+        framgentStack = new Stack<>();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -53,21 +53,13 @@ public class MainActivity extends AppCompatActivity
 
         ma = this;
 
-        //Llamar a AllArticlesFragment
-        changeFragment(new AllArticlesFragment());
+        nextFragment(new AllArticlesFragment());
 
     }
 
     @Override
     public void onBackPressed() {
-        Log.i("OnBack", "entra");
-        changeFragment(lastFrag);
-        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }*/
+        lastFragment();
     }
 
     @Override
@@ -83,7 +75,7 @@ public class MainActivity extends AppCompatActivity
         int duration = Toast.LENGTH_SHORT;
 
         //noinspection SimplifiableIfStatement
-        if(id== R.id.action_search){
+        if (id == R.id.action_search) {
             SearchView sv = new SearchView(getSupportActionBar().getThemedContext());
             MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
             MenuItemCompat.setActionView(item, sv);
@@ -93,17 +85,12 @@ public class MainActivity extends AppCompatActivity
 
                     SearchedArticlesFragment frag = new SearchedArticlesFragment();
                     frag.showSearchedArticles(query);
-                    changeFragment(frag);
+                    nextFragment(frag);
                     return false;
                 }
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    /*SearchedArticlesFragment frag = new SearchedArticlesFragment();
-                    frag.showSearchedArticles(newText);
-                    Log.i("Cambios","ENTRA AL SUBIR");
-                    changeFragment(frag);*/
-                    Log.i("Cambios","sale del subir");
                     return false;
                 }
             });
@@ -116,7 +103,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onViewDetachedFromWindow(View v) {
                     AllArticlesFragment frag = new AllArticlesFragment();
-                    changeFragment(frag);
+                    nextFragment(frag);
                 }
             });
         }
@@ -124,7 +111,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public static MainActivity getActualMainActivity(){
+    public static MainActivity getActualMainActivity() {
         return ma;
     }
 
@@ -134,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         boolean fragmentTransaction = false;
         Fragment fragment = null;
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_login:
                 fragment = new LoginFragment();
                 fragmentTransaction = true;
@@ -166,8 +153,8 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
 
-        if(fragmentTransaction) {
-            changeFragment(fragment);
+        if (fragmentTransaction) {
+            nextFragment(fragment);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -175,9 +162,21 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void changeFragment(Fragment x){
-        lastFrag = actualFragment;
-        actualFragment = x;
+    public void lastFragment() {
+        try {
+            framgentStack.pop();
+            Fragment x = framgentStack.peek();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.include_main, x)
+                    .commit();
+
+        } catch (EmptyStackException e) {
+            //preguntar salir de la aplicación
+        }
+    }
+
+    public void nextFragment(Fragment x) {
+        framgentStack.push(x);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.include_main, x)
                 .commit();
