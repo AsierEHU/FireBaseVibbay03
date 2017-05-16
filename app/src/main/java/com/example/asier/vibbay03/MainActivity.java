@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asier.vibbay03.Fragments.AllArticlesFragment;
@@ -148,6 +149,8 @@ public class MainActivity extends AppCompatActivity
                 navigationView.getMenu().findItem(R.id.nav_myBids).setVisible(false);
                 navigationView.getMenu().findItem(R.id.nav_myArticles).setVisible(false);
                 navigationView.getMenu().findItem(R.id.nav_newArticle).setVisible(false);
+                final TextView textViewChange = (TextView)navigationView.findViewById(R.id.bienvenidaID);
+                textViewChange.setText("¡Bienvenido a Vibbay03!");
                 fragment = new AllArticlesFragment();
                 fragmentTransaction = true;
                 break;

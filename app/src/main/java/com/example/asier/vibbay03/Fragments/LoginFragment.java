@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.asier.vibbay03.Beans.Usuario;
@@ -31,7 +32,6 @@ public class LoginFragment extends Fragment {
     LinearLayout fL;
     NavigationView navigation;
     Fragment allArticles;
-
 
     public LoginFragment() {
         // Required empty public constructor
@@ -75,7 +75,8 @@ public class LoginFragment extends Fragment {
                     LoginFireBaseTool.loggedIn = u;
                     loginMessage = Toast.makeText(getContext(), "LOGIN CORRECTO", Toast.LENGTH_SHORT);
                     allArticles = new AllArticlesFragment();
-
+                    TextView textViewChange = (TextView)fL.getRootView().findViewById(R.id.bienvenidaID);
+                    textViewChange.setText(u.getEmail() + ", bienvenido a Vibbay03!");
                     navigation.getMenu().findItem(R.id.nav_login).setVisible(false);
                     navigation.getMenu().findItem(R.id.nav_logout).setVisible(true);
                     navigation.getMenu().findItem(R.id.nav_myBids).setVisible(true);
