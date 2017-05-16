@@ -31,7 +31,6 @@ public class LoginFragment extends Fragment {
     Button buttonClick;
     LinearLayout fL;
     NavigationView navigation;
-    Fragment allArticles;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -74,7 +73,6 @@ public class LoginFragment extends Fragment {
                     Log.i("Login", "Correcto");
                     LoginFireBaseTool.loggedIn = u;
                     loginMessage = Toast.makeText(getContext(), "LOGIN CORRECTO", Toast.LENGTH_SHORT);
-                    allArticles = new AllArticlesFragment();
                     TextView textViewChange = (TextView)fL.getRootView().findViewById(R.id.bienvenidaID);
                     textViewChange.setText(u.getEmail() + ", bienvenido a Vibbay03!");
                     navigation.getMenu().findItem(R.id.nav_login).setVisible(false);
