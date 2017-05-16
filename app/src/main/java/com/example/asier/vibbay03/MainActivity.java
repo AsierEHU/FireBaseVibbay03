@@ -60,7 +60,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        lastFragment();
+        DrawerLayout lay = (DrawerLayout)findViewById(R.id.drawer_layout);
+        if(lay.isDrawerOpen(GravityCompat.START)){
+            lay.closeDrawers();
+        }else{
+            lastFragment();
+        }
     }
 
     @Override
