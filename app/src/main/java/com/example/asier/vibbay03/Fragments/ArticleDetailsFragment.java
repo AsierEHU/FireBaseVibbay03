@@ -113,12 +113,12 @@ public class ArticleDetailsFragment extends Fragment {
                     BidTools.orderListByPrice(pujasArt);
                     ll.removeAllViews();
                     if (pujasArt.isEmpty()) {
-                        TextView tv = new TextView(getContext());
+                        TextView tv = new TextView(ll.getContext());
                         tv.setText("No existen pujas");
                         ll.addView(tv);
                     } else {
                         for (Puja p1 : pujasArt) {
-                            TextView tv = new TextView(getContext());
+                            TextView tv = new TextView(ll.getContext());
                             tv.setText(p1.getIdUsuario() + " - " + String.format("%1$,.2f€", p1.getPrecio()));
                             ll.addView(tv);
                         }
