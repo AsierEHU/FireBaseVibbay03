@@ -163,7 +163,7 @@ public class ArticleDetailsFragment extends Fragment {
             });
 
             //Pujar ( si el articulo no es tuyo)
-        } else if (LoginFireBaseTool.loggedIn.getEmail() != articulo.getUserId()) {
+        } else if (!LoginFireBaseTool.loggedIn.getEmail().equals(articulo.getUserId())) {
             ArticleTools.onArticleStateChange(articulo, new ArticleExec() {
                 @Override
                 public void execAction(Articulo a) {
