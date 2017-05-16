@@ -164,48 +164,21 @@ public class ArticleDetailsFragment extends Fragment {
 
             //Pujar ( si el articulo no es tuyo)
         } else if (!LoginFireBaseTool.loggedIn.getEmail().equals(articulo.getUserId())) {
+            final AlertDialog ad = BidTools.createDialog(articulo,getContext());
             ArticleTools.onArticleStateChange(articulo, new ArticleExec() {
                 @Override
                 public void execAction(Articulo a) {
+
                     if (a.isEstado() == 1) {
                         b.setText("Pujar");
                         b.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-                                alert.setTitle("Nueva puja");
-                                alert.setMessage("Indique el precio de su puja");
-                                final EditText input = new EditText(getContext());
-                                input.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-                                alert.setView(input);
-                                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int whichButton) {
-                                        try {
-                                            double price = Double.valueOf(input.getText().toString());
-                                            if (price <= Math.max(articulo.getMax_puja(), articulo.getPrecio())) {
-                                                Toast toast = Toast.makeText(getContext(), "La puja debe ser mayor que " + String.format("%1$,.2f€", Math.max(articulo.getMax_puja(), articulo.getPrecio())), Toast.LENGTH_SHORT);
-                                                toast.show();
-                                            } else {
-                                                ArticleTools.pujar(articulo, price);
-                                                Toast toast = Toast.makeText(getContext(), "Puja realizada correctamente", Toast.LENGTH_SHORT);
-                                                toast.show();
-                                            }
-                                        } catch (Exception e) {
-                                            Toast toast = Toast.makeText(getContext(), "Error, ninguna puja insertada", Toast.LENGTH_SHORT);
-                                            toast.show();
-                                        }
-
-                                    }
-                                });
-                                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int whichButton) {
-                                        // Canceled.
-                                    }
-                                });
-                                alert.show();
+                                ad.show();
                             }
                         });
                     } else {
+                        ad.cancel();
                         b.setText("Pujas cerradas");
                         b.setEnabled(false);
                     }
