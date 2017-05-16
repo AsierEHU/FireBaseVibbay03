@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -13,17 +14,18 @@ import java.util.ArrayList;
 
 public class BidAdapter extends BaseAdapter{
 
-    private final ArrayList<ArticleViews> avs;
-    private final Context con;
+    private final ArrayList<LinearLayout> aly;
 
     public BidAdapter(ArrayList<ArticleViews> avs, Context con){
-        this.avs = avs;
-        this.con = con;
+        aly = new ArrayList<>();
+        for(ArticleViews av:avs){
+            aly.add(av.getBidView(con));
+        }
     }
 
     @Override
     public int getCount() {
-        return avs.size();
+        return aly.size();
     }
 
     @Override
@@ -38,6 +40,6 @@ public class BidAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return avs.get(position).getBidView(con);
+        return aly.get(position);
     }
 }

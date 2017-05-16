@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -13,18 +14,19 @@ import java.util.ArrayList;
 
 public class ArticleAdapter extends BaseAdapter{
 
-    private final ArrayList<ArticleViews> avs;
-    private final Context con;
+    private final ArrayList<LinearLayout> aly;
 
     public ArticleAdapter(ArrayList<ArticleViews> avs, Context con){
-        this.avs = avs;
-        this.con = con;
+        aly = new ArrayList<>();
+        for(ArticleViews av:avs){
+            aly.add(av.getTinyView(con));
+        }
     }
 
 
     @Override
     public int getCount() {
-        return avs.size();
+        return aly.size();
     }
 
     @Override
@@ -39,6 +41,6 @@ public class ArticleAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return avs.get(position).getTinyView(con);
+        return aly.get(position);
     }
 }
