@@ -1,17 +1,12 @@
 package com.example.asier.vibbay03.Fragments;
 
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -29,17 +24,9 @@ import com.example.asier.vibbay03.Tools.ArticleTools;
 import com.example.asier.vibbay03.Tools.BidTools;
 import com.example.asier.vibbay03.Tools.ImageTools;
 import com.example.asier.vibbay03.Tools.LoginFireBaseTool;
-import com.example.asier.vibbay03.Views.ArticleViews;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by asier on 02/05/2017.
@@ -84,7 +71,7 @@ public class ArticleDetailsFragment extends Fragment {
         ip.setText("Precio inicial: " + String.format("%1$,.2f€", articulo.getPrecio()));
 
         //last Bid and show bids
-        double lastBid = 0;
+
         final TextView lb = (TextView) sv.findViewById(R.id.lastbid);
         final LinearLayout ll = (LinearLayout) sv.findViewById(R.id.bidsLayout);
 
@@ -124,6 +111,7 @@ public class ArticleDetailsFragment extends Fragment {
                         }
                     }
                 }
+                pujasArt.clear();
             }
         });
 
@@ -181,7 +169,7 @@ public class ArticleDetailsFragment extends Fragment {
                         ad.cancel();
                         b.setText("Pujas cerradas");
                         b.setEnabled(false);
-                        Toast.makeText(getContext(), "La puja ha sido cerrada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(sv.getContext(), "La puja ha sido cerrada", Toast.LENGTH_SHORT).show();
                     }
                 }
 
