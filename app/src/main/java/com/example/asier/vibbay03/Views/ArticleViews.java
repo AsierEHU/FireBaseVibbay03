@@ -66,11 +66,10 @@ public class ArticleViews {
         //nombre
         TextView nombre = new TextView(x.getContext());
         nombre.setText(art.getTitulo());
-        if (art.isEstado() == 1) {
-            Log.i("", "");
-            //nombre.setTextColor(Color.BLACK);
-        } else {
+        if (art.isEstado() == 0) {
             nombre.setTextColor(Color.RED);
+        } else if(LoginFireBaseTool.loggedIn!=null && LoginFireBaseTool.loggedIn.getEmail().equals(art.getUserId())) {
+            nombre.setTextColor(Color.GREEN);
         }
         nombre.setTypeface(null, Typeface.BOLD);
 
@@ -92,7 +91,21 @@ public class ArticleViews {
         final ImageView imagen = new ImageView(x.getContext());
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(300, 200);
         imagen.setLayoutParams(layoutParams);
-        ImageTools.fillImageBitmap(art.getImagen(),imagen);
+        final FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference httpsReference = storage.getReferenceFromUrl(art.getImagen());
+        final long FOUR_MEGABYTE = 2048 * 2048;
+        httpsReference.getBytes(FOUR_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                imagen.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
 
 
         //add views

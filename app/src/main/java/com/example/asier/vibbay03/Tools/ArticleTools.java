@@ -43,7 +43,6 @@ public class ArticleTools {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.i("asd",dataSnapshot.getKey());
                 Articulo a = dataSnapshot.getValue(Articulo.class);
                 a.setMax_puja(art.getMax_puja());
                 a.setUserId(art.getUserId());

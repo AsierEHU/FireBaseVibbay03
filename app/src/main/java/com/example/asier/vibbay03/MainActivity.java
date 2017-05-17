@@ -171,14 +171,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void lastFragment() {
-        try {
+
+        if(framgentStack.size()>1){
             framgentStack.pop();
             Fragment x = framgentStack.peek();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.include_main, x)
                     .commit();
-
-        } catch (EmptyStackException e) {
+        }else{
             //preguntar salir de la aplicación
         }
     }

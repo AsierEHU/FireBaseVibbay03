@@ -1,6 +1,9 @@
 package com.example.asier.vibbay03.Fragments;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -24,7 +27,11 @@ import com.example.asier.vibbay03.Tools.ArticleTools;
 import com.example.asier.vibbay03.Tools.BidTools;
 import com.example.asier.vibbay03.Tools.ImageTools;
 import com.example.asier.vibbay03.Tools.LoginFireBaseTool;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -64,7 +71,21 @@ public class ArticleDetailsFragment extends Fragment {
 
         //image
         final ImageView i = (ImageView) sv.findViewById(R.id.imageArt);
-        ImageTools.fillImageBitmap(articulo.getImagen(), i);
+        final FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference httpsReference = storage.getReferenceFromUrl(articulo.getImagen());
+        final long FOUR_MEGABYTE = 2048 * 2048;
+        httpsReference.getBytes(FOUR_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                i.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
 
         //Price
         TextView ip = (TextView) sv.findViewById(R.id.initialprice);

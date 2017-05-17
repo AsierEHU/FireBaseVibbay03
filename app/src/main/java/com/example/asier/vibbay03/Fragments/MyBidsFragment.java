@@ -67,7 +67,7 @@ public class MyBidsFragment extends ArticlesFragment {
             }
             @Override
             public void onFinish() {
-                fl.setAdapter(new BidAdapter(articles,getContext()));
+                fl.setAdapter(new BidAdapter(articles,fl.getContext()));
             }
         });
     }
