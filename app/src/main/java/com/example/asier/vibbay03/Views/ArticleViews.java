@@ -70,6 +70,8 @@ public class ArticleViews {
             nombre.setTextColor(Color.RED);
         } else if(LoginFireBaseTool.loggedIn!=null && LoginFireBaseTool.loggedIn.getEmail().equals(art.getUserId())) {
             nombre.setTextColor(Color.GREEN);
+        } else{
+            nombre.setTextColor(Color.GRAY);
         }
         nombre.setTypeface(null, Typeface.BOLD);
 
@@ -93,8 +95,8 @@ public class ArticleViews {
         imagen.setLayoutParams(layoutParams);
         final FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference httpsReference = storage.getReferenceFromUrl(art.getImagen());
-        final long FOUR_MEGABYTE = 2048 * 2048;
-        httpsReference.getBytes(FOUR_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        final long ONE_MEGABYTE = 1024 * 1024;
+        httpsReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);

@@ -1,6 +1,7 @@
 package com.example.asier.vibbay03;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.NavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +26,7 @@ import com.example.asier.vibbay03.Fragments.SearchedArticlesFragment;
 import com.example.asier.vibbay03.Fragments.LoginFragment;
 import com.example.asier.vibbay03.Fragments.MyArticlesFragment;
 import com.example.asier.vibbay03.Fragments.NewArticleFragment;
+import com.example.asier.vibbay03.Tools.LoginFireBaseTool;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
@@ -149,6 +152,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = true;
                 break;
             case R.id.nav_logout:
+                LoginFireBaseTool.loggedIn=null;
                 navigationView.getMenu().findItem(R.id.nav_login).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_logout).setVisible(false);
                 navigationView.getMenu().findItem(R.id.nav_myBids).setVisible(false);
@@ -179,7 +183,16 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.include_main, x)
                     .commit();
         }else{
-            //preguntar salir de la aplicación
+            new AlertDialog.Builder(this)
+                    .setMessage("¿Seguro que quieres salir?")
+                    .setCancelable(false)
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            MainActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
         }
     }
 

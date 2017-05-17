@@ -73,8 +73,8 @@ public class ArticleDetailsFragment extends Fragment {
         final ImageView i = (ImageView) sv.findViewById(R.id.imageArt);
         final FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference httpsReference = storage.getReferenceFromUrl(articulo.getImagen());
-        final long FOUR_MEGABYTE = 2048 * 2048;
-        httpsReference.getBytes(FOUR_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        final long ONE_MEGABYTE = 1024 * 1024;
+        httpsReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -177,23 +177,26 @@ public class ArticleDetailsFragment extends Fragment {
             ArticleTools.onArticleStateChange(articulo, new ArticleExec() {
                 @Override
                 public void execAction(Articulo a) {
-
-                    if (a.isEstado() == 1) {
-                        b.setText("Pujar");
-                        b.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                ad.show();
-                            }
-                        });
-                    } else {
-                        ad.cancel();
+                    if (articulo.isEstado()==1) {
+                        if(a.isEstado()==0){
+                            Toast.makeText(sv.getContext(), "La puja ha sido cerrada", Toast.LENGTH_SHORT).show();
+                            ad.cancel();
+                            b.setText("Pujas cerradas");
+                            b.setEnabled(false);
+                        }else{
+                            b.setText("Pujar");
+                            b.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ad.show();
+                                }
+                            });
+                        }
+                    }else{
                         b.setText("Pujas cerradas");
                         b.setEnabled(false);
-                        Toast.makeText(sv.getContext(), "La puja ha sido cerrada", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 @Override
                 public void onFinish() {
                 }
