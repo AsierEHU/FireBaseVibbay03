@@ -41,7 +41,7 @@ public class SearchedArticlesFragment extends ArticlesFragment {
             }
             @Override
             public void onFinish() {
-                fl.setAdapter(new ArticleAdapter(articles,getContext()));
+                fl.setAdapter(new ArticleAdapter(articles,fl.getContext()));
             }
         });
 

@@ -181,6 +181,7 @@ public class ArticleDetailsFragment extends Fragment {
                         ad.cancel();
                         b.setText("Pujas cerradas");
                         b.setEnabled(false);
+                        Toast.makeText(getContext(), "La puja ha sido cerrada", Toast.LENGTH_SHORT).show();
                     }
                 }
 
