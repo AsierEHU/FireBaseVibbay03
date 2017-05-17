@@ -44,11 +44,13 @@ public class NewArticleFragment extends Fragment {
     private ImageView imageView;
     private ImageView galleryView;
     private ImageView resultImage;
+    boolean hasUploadedImage = false;
     LinearLayout ll;
     EditText nombre;
     EditText precio;
     Button add;
     Bitmap bm;
+
 
     public NewArticleFragment() {
         // Required empty public constructor
@@ -98,50 +100,55 @@ public class NewArticleFragment extends Fragment {
         nombre = (EditText) ll.findViewById(R.id.ArticleName);
         precio = (EditText) ll.findViewById(R.id.ArticlePrice);
 
-        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        String name = LoginFireBaseTool.loggedIn.getEmail() + new Date().getTime();
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://vibbay03-4f198.appspot.com/articulos/"+name+".jpg");
+        if(nombre.getText().toString().matches("") || precio.getText().toString().matches("") || !hasUploadedImage) {
+            Toast.makeText(ll.getContext(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+        }else{
+            final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            String name = LoginFireBaseTool.loggedIn.getEmail() + new Date().getTime();
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://vibbay03-4f198.appspot.com/articulos/"+name+".jpg");
 
-        // Get the data from an ImageView as bytes
-        resultImage.setDrawingCacheEnabled(true);
-        resultImage.buildDrawingCache();
-        Bitmap bitmap = resultImage.getDrawingCache();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
+            // Get the data from an ImageView as bytes
+            resultImage.setDrawingCacheEnabled(true);
+            resultImage.buildDrawingCache();
+            Bitmap bitmap = resultImage.getDrawingCache();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data = baos.toByteArray();
 
-        UploadTask uploadTask = storageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.i("ERROR ONUPLOAD",exception.getMessage());
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+            UploadTask uploadTask = storageRef.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.i("ERROR ONUPLOAD",exception.getMessage());
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
-             //   DecimalFormat df = new DecimalFormat("#.00");
-            //    String pri = df.format(Double.parseDouble(precio.getText().toString()));
+                    //   DecimalFormat df = new DecimalFormat("#.00");
+                    //    String pri = df.format(Double.parseDouble(precio.getText().toString()));
 
-                String pri = precio.getText().toString();
+                    String pri = precio.getText().toString();
 
-                Articulo a = new Articulo(nombre.getText().toString(),1,downloadUrl.toString(),Double.parseDouble(pri));
-                Map<String, Object> articuloValues = a.toMap();
+                    Articulo a = new Articulo(nombre.getText().toString(),1,downloadUrl.toString(),Double.parseDouble(pri));
+                    Map<String, Object> articuloValues = a.toMap();
 
-                Map<String, Object> childUpdates = new HashMap<>();
-                childUpdates.put("/Articulos/"+LoginFireBaseTool.loggedIn.getEmail()+"/"+nombre.getText(),articuloValues);
-                mDatabase.updateChildren(childUpdates);
+                    Map<String, Object> childUpdates = new HashMap<>();
+                    childUpdates.put("/Articulos/"+LoginFireBaseTool.loggedIn.getEmail()+"/"+nombre.getText(),articuloValues);
+                    mDatabase.updateChildren(childUpdates);
 
-                nombre.setText("");
-                precio.setText("");
-                resultImage.setImageResource(R.drawable.ic_imagebox);
-                Toast toast = Toast.makeText(getContext(), "Nuevo artículo creado", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
+                    nombre.setText("");
+                    precio.setText("");
+                    hasUploadedImage = false;
+                    resultImage.setImageResource(R.drawable.ic_imagebox);
+                    Toast toast = Toast.makeText(getContext(), "Nuevo artículo creado", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            });
+        }
     }
 
     @Override
@@ -159,6 +166,7 @@ public class NewArticleFragment extends Fragment {
                 }else{
                     bm = ImageTools.getResizedBitmap(MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri),600);
                 }
+                hasUploadedImage = true;
                 resultImage.setImageBitmap(bm);
 
             } catch (IOException e) {
